@@ -21,6 +21,7 @@ vector< vector<int> > threeSum(vector<int>& nums) {
     int len = nums.size();
     for (int i = 0; i < len-2; ++i)
     {
+        // 三数之和拆解为两数之和
         if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
             // 双指针，一个从前向后走，一个从后向前走
             int low = i + 1, high = len - 1;
