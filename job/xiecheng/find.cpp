@@ -4,7 +4,6 @@
  * @create date 2018-09-05 05:50:17
  * @modify date 2018-09-05 05:50:17
  * @desc 输入编号和起止时间，给定跟一个时间，输入改时间所在范围的编号
- *       有待改进，目前的解法是按照活动起止时间排序来计算的
 */
 
 #include <iostream>
@@ -31,22 +30,21 @@ int main(int argc, char const *argv[])
         }
         inputVec.push_back(tempVec);
     }
+    // cout<<inputVec.size()<<endl;
     // find num
     low = 0;
     high = n-1;
+    mid = (low + high) / 2;
     while(low <= high) {
-        mid = (low + high) / 2;
         if(inputVec[mid][1] < target && inputVec[mid][2] > target) {
             flag = 1;
             res = inputVec[mid][0];
-            break;
         } else if(inputVec[mid][2] < target) {
             low = mid + 1;
         } else if(inputVec[mid][1] > target){
             high = mid - 1;
         }
     }
-    // output
     if(flag) {
         cout<<res<<endl;
     } else {
