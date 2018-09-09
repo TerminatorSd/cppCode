@@ -46,7 +46,7 @@ int lengthOfLongestSubstring(string s)
 
 int main(int argc, char const *argv[])
 {
-    string str = "abcabcbb";
+    string str = "abc";
 
     int len = lengthOfLongestSubstring(str);
     cout<<len<<endl;
