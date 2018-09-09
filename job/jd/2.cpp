@@ -7,6 +7,12 @@
  * 从i城市到j城市有且只有一条唯一路径。
  * 有一家施工队计划承包两段道路的修建工作，要求这两段道路不经过相同的城市(包括路径端点)，
  * 他们可以获得的利润是两段道路长度的乘积，现在要使得利润最大化，问最大能获得多少利润。
+ * 6
+1 2
+2 3
+2 4
+5 4
+6 4
 */
 
 #include <iostream>
@@ -18,6 +24,7 @@
 
 using namespace std;
 int roadLen = 0;
+// 存放的是切掉一个边以后还连通的边的长度
 vector<int> visitVec;
 
 bool cutAll(map< pair<int, int>, int> &flagMap, vector< vector<int> > &arr)
@@ -58,7 +65,7 @@ int visitPoint(int i, int j, vector< vector<int> > &arr, vector< vector<int> > &
     return 1;
 }
 
-bool allVisited(vector< vector<int> > &arr, vector< vector<int> > &visitFlag)
+pair<int, int> allVisited(vector< vector<int> > &arr, vector< vector<int> > &visitFlag)
 {
     int len = arr.size();
     for(int i = 0; i < len; i++)
@@ -67,11 +74,11 @@ bool allVisited(vector< vector<int> > &arr, vector< vector<int> > &visitFlag)
         {
             if(!visitFlag[i][j] && arr[i][j] == 1)
             {
-                return false;
+                return make_pair(i, j);
             }
         }
     }
-    return true;
+    return make_pair(0, 0);
 }
 
 int getNowRes(vector< vector<int> > &arr, vector< vector<int> > &visitFlag)
@@ -79,19 +86,12 @@ int getNowRes(vector< vector<int> > &arr, vector< vector<int> > &visitFlag)
     // 广度优先搜索遍历
     int len = arr.size(), len2;
     int roadNum = 0, res;
-    while(!allVisited(arr, visitFlag))
+    pair<int, int> visitRes = allVisited(arr, visitFlag);
+    while(visitRes.first != 0 && visitRes.second != 0)
     {
-        for(int i = 0; i < len; i++)
-        {
-            for(int j = 0; j < len; j++)
-            {
-                if(!visitFlag[i][j] && arr[i][j] == 1)
-                {
-                    roadNum += 1;
-                    visitPoint(i, j, arr, visitFlag);
-                }
-            }
-        }
+        roadNum += 1;
+        visitPoint(visitRes.first, visitRes.second, arr, visitFlag);
+        visitRes = allVisited(arr, visitFlag);
     }
     if(roadNum == 1)
     {
@@ -136,6 +136,7 @@ int solve(vector< vector<int> > &arr) {
                     visitFlag[i][j] = 1; 
                     // 获取当前利润
                     tempRes = getNowRes(arr, visitFlag);
+                    visitVec.clear();
                     if(tempRes > res)
                     {
                         res = tempRes;
