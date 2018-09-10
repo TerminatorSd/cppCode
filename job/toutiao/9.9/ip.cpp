@@ -6,6 +6,7 @@ using namespace std;
 int getAllIp(string ip, int n) {
 	int len = ip.size();
     int first, second, third, number, res = 0;
+	// 最后一位数字
 	if (n == 0) {
 		if (len > 3 || len < 1) {
 			return 0;
