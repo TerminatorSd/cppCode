@@ -7,7 +7,6 @@
 */
 #include <iostream>
 #include <vector>
-
 using namespace std;
 
 void swap(int *a, int *b)
