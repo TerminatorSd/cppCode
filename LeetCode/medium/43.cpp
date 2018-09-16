@@ -15,7 +15,7 @@ string multiply(string num1, string num2) {
         return "0";
     }
     string res;
-    int carry, temp = 0;
+    int temp = 0;
     int len1 = num1.size(), len2 = num2.size();
     // 反转两个字符串
     reverse(num1.begin(), num1.end());
