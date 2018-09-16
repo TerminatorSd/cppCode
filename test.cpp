@@ -12,7 +12,10 @@ using namespace std;
 
 void makePowerVec(string p, vector<string> &powerVec)
 {
+    string q = p;
     powerVec.push_back(p);
+    reverse(p.begin(), p.end());
+    powerVec.push_back(q + p);
     for(int i = 0, j = p.size() - 1; i <= j; i++, j--)
     {
         if(p[i] == p[j])
@@ -32,7 +35,8 @@ bool havePower(string str, vector<string> &powerVec)
 {
     for(int i = 0, len = powerVec.size(); i < len; i++)
     {
-        if(str.find(powerVec[i]))
+        int pos = str.find(powerVec[i]);
+        if(pos > -1)
         {
             return true;
         }
@@ -54,22 +58,27 @@ int main(int argc, char const *argv[])
     vector< pair<int, string> > vecPair;
     // cin>>str>>p;
     str = "xyabababcba";
-    p = "aba";
+    p = "ab";
     // 构建能量石数组
     makePowerVec(p, powerVec);
+    for(int i = 0, len = powerVec.size(); i < len; i++)
+    {
+        cout<<powerVec[i]<<endl;
+    }
     // 找出所有能量石的位置，以及能量石的名字
     lenStr = str.size();
     lenP = p.size();
     string strCopy = str;
+    // 从abababa 中找出ab 出现的位置
     while(havePower(strCopy, powerVec))
     {
         for(int i = 0, len = powerVec.size(); i < len; i++)
         {
             int pos = strCopy.find(powerVec[i]);
+            // find 方法返回size_t 类型变量，可以赋值给int 变量，但是不能与int 变量直接比较
             if(pos > -1)
             {
                 vecPair.push_back(make_pair(pos, powerVec[i]));
-                strCopy.erase(pos, powerVec[i].size());
             }
         }
     }
@@ -78,6 +87,7 @@ int main(int argc, char const *argv[])
     {
         cout<<vecPair[i].first<<","<<vecPair[i].second<<endl;
     }
+    
     // 寻找连续的能量石
     // for(int i = 0, len = vecPair.size(); i < len; i++)
     // {
