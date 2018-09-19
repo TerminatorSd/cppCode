@@ -10,6 +10,8 @@
 #include <vector>
 using namespace std;
 
+// 给定一个字符串，找到该字符串可以形成的能量石的组合
+// 比如 aba -> aba abaaba ababa
 void makePowerVec(string p, vector<string> &powerVec)
 {
     string q = p;
@@ -31,6 +33,7 @@ void makePowerVec(string p, vector<string> &powerVec)
     }
 }
 
+// 判断一个字符串里是否有能量石
 bool havePower(string str, vector<string> &powerVec)
 {
     for(int i = 0, len = powerVec.size(); i < len; i++)
@@ -68,25 +71,32 @@ int main(int argc, char const *argv[])
     // 找出所有能量石的位置，以及能量石的名字
     lenStr = str.size();
     lenP = p.size();
-    string strCopy = str;
+    string copyStr = str;
     // 从abababa 中找出ab 出现的位置
-    while(havePower(strCopy, powerVec))
+    while(havePower(copyStr, powerVec))
     {
         for(int i = 0, len = powerVec.size(); i < len; i++)
         {
-            int pos = strCopy.find(powerVec[i]);
+            int pos = copyStr.find(powerVec[i]);
             // find 方法返回size_t 类型变量，可以赋值给int 变量，但是不能与int 变量直接比较
             if(pos > -1)
             {
                 vecPair.push_back(make_pair(pos, powerVec[i]));
             }
+            // 替换掉已经找出的能量石
+            string temp = "";
+            for(int j = 0, len = powerVec[i].length(); j < len; j++)
+            {
+                temp += '#';
+            }
+            copyStr.replace(pos, powerVec[i].length(), temp);
         }
     }
     sort(vecPair.begin(), vecPair.end(), cmp);
-    // for(int i = 0, len = vecPair.size(); i < len; i++)
-    // {
-    //     cout<<vecPair[i].first<<","<<vecPair[i].second<<endl;
-    // }
+    for(int i = 0, len = vecPair.size(); i < len; i++)
+    {
+        cout<<vecPair[i].first<<","<<vecPair[i].second<<endl;
+    }
     
     // 寻找连续的能量石
     // for(int i = 0, len = vecPair.size(); i < len; i++)
