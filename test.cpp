@@ -68,7 +68,6 @@ int main(int argc, char const *argv[])
     {
         cout<<powerVec[i]<<endl;
     }
-    
     // 找出所有能量石的位置，以及能量石的名字
     lenStr = str.size();
     lenP = p.size();
