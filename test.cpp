@@ -60,7 +60,6 @@ int main(int argc, char const *argv[])
     vector<string> powerVec;
     vector< pair<int, string> > vecPair;
     // cin>>str>>p;
-    
     str = "xyabababcba";
     p = "ab";
     // 构建能量石数组
