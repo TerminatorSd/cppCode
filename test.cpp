@@ -97,7 +97,6 @@ int main(int argc, char const *argv[])
     {
         cout<<vecPair[i].first<<","<<vecPair[i].second<<endl;
     }
-    
     // 寻找连续的能量石
     // for(int i = 0, len = vecPair.size(); i < len; i++)
     // {
