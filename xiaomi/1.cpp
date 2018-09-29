@@ -28,7 +28,7 @@ int main(int argc, char const *argv[])
     sort(vecs.begin(), vecs.end(), cmp);
 
     vector<int> c;
-    auto it = vecs.begin();
+    vector< set<int> >::iterator it = vecs.begin();
     it++;
     auto it1 = vecs.begin();
     for(; it1 != vecs.end(); it1++)
