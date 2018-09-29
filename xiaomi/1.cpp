@@ -24,7 +24,6 @@ int main(int argc, char const *argv[])
             cin >> j; 
             vecs[i].insert(i);
         } 
-
     }
     sort(vecs.begin(), vecs.end(), cmp);
 
