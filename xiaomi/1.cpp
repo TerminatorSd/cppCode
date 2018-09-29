@@ -25,7 +25,6 @@ int main(int argc, char const *argv[])
             vecs[i].insert(i);
         } 
 
-
     }
     sort(vecs.begin(), vecs.end(), cmp);
 
@@ -38,7 +37,7 @@ int main(int argc, char const *argv[])
         set_intersection(it->begin(), it->end(), it1->begin(), it1->end(), back_inserter(c));
         if(c.size() > 0)
         {
-            
+
         }
 
     }
