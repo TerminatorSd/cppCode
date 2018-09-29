@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
     vector<int> c;
     vector< set<int> >::iterator it = vecs.begin();
     it++;
-    auto it1 = vecs.begin();
+    vector< set<int> >::iterator it1 = vecs.begin();
     for(; it1 != vecs.end(); it1++)
     {        
         set_intersection(it->begin(), it->end(), it1->begin(), it1->end(), back_inserter(c));
