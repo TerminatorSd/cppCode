@@ -16,10 +16,9 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    int n = 8, k = 7, res, min = 9999, resIndex;
+    int n = 8, k = 7, res;
     string target = "94476413";
-    vector<int> tempVec, smallVec;
-    vector< vector<int> > outVec;
+    vector<int> tempVec, outVec;
     // input
     // cin>>n>>k>>target;
     // 对于输出字符串的每一位，求出将其他所有位数转变为当前值的代价
@@ -28,35 +27,18 @@ int main(int argc, char const *argv[])
         int sum = 0;
         for(int j = 0; j < n; j++) {
             if(j != i) {
-                int tempRes = abs(tempInt - (target[j] - '0'));
-                tempVec.push_back(tempRes);
+                tempVec.push_back(abs(tempInt - (target[j] - '0')));
             }
         }
         sort(tempVec.begin(), tempVec.end());
-        for(int l = 0; l < k - 1; l++) {
+        for(int l = 0; l < k; l++) {
             sum += tempVec[l];
         }
-        // 代价、目标值和最大差
-        smallVec.push_back(sum);
-        smallVec.push_back(tempInt);
-        smallVec.push_back(tempVec[k - 2]);
-        outVec.push_back(smallVec);
+        outVec.push_back(sum);
         tempVec.clear();
-        smallVec.clear();
     }
-    for(int m = 0; m < n; m++) {
-        // cout<<outVec[m][0]<<" ";
-        if(outVec[m][0] < min) {
-            min = outVec[m][0];
-            resIndex = m;
-        }
-    }
-    for(int p = 0; p < n; p++) {
-        if(abs(target[p] - '0' - outVec[resIndex][1]) <= outVec[resIndex][2]) {
-            target[p] = outVec[resIndex][1] + '0';
-        }
-    }
-    cout<<outVec[resIndex][0]<<endl;
-    cout<<target<<endl;
+    sort(outVec.begin(), outVec.end());
+    cout<<outVec[0]<<endl;
     return 0;
 }
+
