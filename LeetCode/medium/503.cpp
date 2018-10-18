@@ -11,6 +11,7 @@ using namespace std;
 
 vector<int> nextGreaterElements(vector<int>& nums) 
 {
+    
     vector<int> res;
     int len = nums.size(), flag = 0;
     for(int i = 0; i < len; i++) 
