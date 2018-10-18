@@ -3,7 +3,7 @@
  * @email scut_sd@163.com
  * @create date 2018-10-11 15:42:30
  * @modify date 2018-10-11 15:42:30
- * @desc 下一个更大元素
+ * @desc 下一个更大元素，数组循环计数
 */
 #include <iostream>
 #include <vector>
