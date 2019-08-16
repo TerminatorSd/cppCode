@@ -21,7 +21,14 @@ typedef pair<int, int> pii;
 typedef vector<pii> vpii;
 
 int main() {
+  vector<int> vs;
   vpii vecPair;
+  // push_back
+  vs.push_back(2);
+  vs.push_back(34);
+  // 排序
+  sort(vs.begin(), vs.end());
+  // insert
   vecPair.insert(vecPair.begin() + 0, make_pair(1, 2));
   vecPair.insert(vecPair.begin() + 1, make_pair(1, 3));
   vecPair.insert(vecPair.begin() + 2, make_pair(1, 3));
