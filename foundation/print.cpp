@@ -39,14 +39,6 @@ int printVector(S s) {
   return 0;
 }
 
-template<class M>
-// 打印值为pair的map 
-int printPairMap (M m) {
-  for(int i = 0; i < m.size(); i++) {
-    cout<<m[i].first<<" "<<m[i].second<<endl;
-  }
-  return 0;
-}
 
 int main() {
   vector<int> vs;
