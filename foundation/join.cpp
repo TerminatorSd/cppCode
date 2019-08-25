@@ -10,8 +10,14 @@
 #include <string>
 using namespace std;
 
-string join(vector<int> a, char c) {
-    string res;
+string join(vector<int> vin, char c) {
+    string res = "";
+    for(int i = 0; i < vin.size(); i++) {
+        res += to_string(vin[i]);
+        if(i != vin.size() - 1) {
+            res += ",";
+        }
+    }
     return res;
 }
 
